@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: assets
+public_folder: assets
+
+collections:
+  - name: "produtos"
+    label: "Produtos"
+    label_singular: "Produto"
+    folder: "_produtos"
+    create: true
+    delete: true
+    format: "yml"
+    identifier_field: nome
+    summary: "{{nome}} - R$ {{preco}}"
+    fields:
+      - {label: "ID", name: "id", widget: "number", value_type: "int", required: true}
+      - {label: "Nome", name: "nome", widget: "string", required: true}
+      - {label: "Código", name: "codigo", widget: "string", required: true}
+      - {label: "Categoria", name: "categoria_id", widget: "select", options: [1,2,3,4,5,6,7,8,9,10,11,12,13,14], required: true}
+      - {label: "Categoria Nome", name: "categoria_nome", widget: "select", options: ["Baterias","Suspensao","Freios","Oleos e Filtros","Motor e Direcao","Palhetas e Acessorios","Iluminacao","Pecas Importadas","Servicos","Arrefecimento","Embreagem","Ignição e Injecao","Ar Condicionado","Escapamento"], required: true}
+      - {label: "Descrição", name: "descricao_curta", widget: "text", required: true}
+      - {label: "Preço", name: "preco", widget: "number", value_type: "float", required: true}
+      - {label: "Preço Promocional", name: "preco_promocional", widget: "number", value_type: "float", required: false}
+      - {label: "Ícone", name: "icone", widget: "string", required: false}
+      - {label: "Estoque", name: "estoque", widget: "number", value_type: "int", required: true}
+      - {label: "Nota Média", name: "nota_media", widget: "number", value_type: "float", required: true}
+      - {label: "Destaque", name: "destaque", widget: "number", value_type: "int", required: false}
+      - {label: "Imagem", name: "imagem", widget: "image", required: false}
