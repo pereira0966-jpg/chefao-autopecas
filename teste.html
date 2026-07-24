@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Teste Chefao</title></head>
+<body>
+<h2>Teste de clique</h2>
+<button onclick="filterByCat(0)">Todos</button>
+<button onclick="filterByCat(5)">Motor</button>
+<button onclick="filterByCat(2)">Suspensao</button>
+<button onclick="filterByCat(3)">Freios</button>
+<button onclick="filterByCat(1)">Eletrica</button>
+<button onclick="filterByCat(4)">Oleos/Filtros</button>
+<div id="debug" style="margin-top:20px;padding:10px;background:#eee;min-height:50px;"></div>
+<script>
+var debug = document.getElementById('debug');
+
+// Simulação do catálogo
+var allProdutos = [
+    {id:1,categoria_id:1,nome:'Bateria Teste'},
+    {id:10,categoria_id:2,nome:'Suspensao Teste'},
+    {id:20,categoria_id:3,nome:'Freio Teste'},
+    {id:30,categoria_id:4,nome:'Oleo Teste'},
+    {id:40,categoria_id:5,nome:'Motor Teste'},
+    {id:50,categoria_id:6,nome:'Palheta Teste'}
+];
+var filteredProdutos = [];
+var navbarFilterCat = 0;
+
+window.filterByCat = function(id) {
+    debug.innerHTML += '<br>filterByCat('+id+') chamado';
+    navbarFilterCat = id;
+    filteredProdutos = allProdutos.filter(function(p){
+        if (navbarFilterCat > 0 && p.categoria_id !== navbarFilterCat) return false;
+        return true;
+    });
+    debug.innerHTML += '<br>  -> '+filteredProdutos.length+' produtos: '+filteredProdutos.map(function(p){return p.nome;}).join(', ');
+};
+
+// Teste inicial
+window.filterByCat(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>TESTE MINIMO</title>
+<style>
+.nav-item { padding:8px 16px; margin:4px; cursor:pointer; background:#213F99; color:white; border:none; border-radius:4px; display:inline-block; }
+.nav-item:hover { background:#2f5ad4; }
+.nav-item.active { background:#FECF03; color:#000; }
+#out { margin:20px; padding:10px; border:1px solid #ccc; min-height:40px; }
+</style>
+</head>
+<body>
+<span class="nav-item active" onclick="filterByCat(0,this)">Todos</span>
+<span class="nav-item" onclick="filterByCat(5,this)">Motor</span>
+<span class="nav-item" onclick="filterByCat(2,this)">Suspensao</span>
+<span class="nav-item" onclick="filterByCat(3,this)">Freios</span>
+<span class="nav-item" onclick="filterByCat(1,this)">Eletrica</span>
+<span class="nav-item" onclick="filterByCat(4,this)">Oleos/Filtros</span>
+<span class="nav-item offer" onclick="filterByPromo(this)">OFERTAS</span>
+<div id="out">Clique nos botoes</div>
+
+<script>
+var allProdutos = [
+{id:1,categoria_id:1,nome:'Bateria 60Ah',preco:349.90,preco_promocional:299.90,estoque:15,nota_media:4.5},
+{id:10,categoria_id:2,nome:'Amortecedor Gol',preco:199.90,preco_promocional:179.90,estoque:10,nota_media:4.5},
+{id:20,categoria_id:3,nome:'Pastilha Freio',preco:79.90,preco_promocional:69.90,estoque:20,nota_media:4.5},
+{id:30,categoria_id:4,nome:'Oleo 5W30',preco:39.90,preco_promocional:34.90,estoque:30,nota_media:4.6},
+{id:40,categoria_id:5,nome:'Homocinetica Gol',preco:189.90,preco_promocional:159.90,estoque:7,nota_media:4.5},
+{id:50,categoria_id:6,nome:'Palheta 18"',preco:29.90,preco_promocional:24.90,estoque:40,nota_media:4.3}
+];
+var filteredProdutos = [];
+var navbarFilterCat = 0, navbarFilterPromo = false;
+var out = document.getElementById('out');
+
+window.filterByCat = function(id, el) {
+    navbarFilterCat = id; navbarFilterPromo = false;
+    document.querySelectorAll('.nav-item').forEach(function(e){ e.classList.remove('active'); });
+    if (el) el.classList.add('active');
+    filteredProdutos = allProdutos.filter(function(p){
+        if (navbarFilterCat > 0 && p.categoria_id !== navbarFilterCat) return false;
+        return true;
+    });
+    out.textContent = 'filterByCat('+id+'): '+filteredProdutos.length+' produtos';
+};
+window.filterByPromo = function(el) {
+    navbarFilterPromo = true; navbarFilterCat = 0;
+    document.querySelectorAll('.nav-item').forEach(function(e){ e.classList.remove('active'); });
+    if (el) el.classList.add('active');
+    filteredProdutos = allProdutos.filter(function(p){
+        if (navbarFilterPromo && !p.preco_promocional) return false;
+        return true;
+    });
+    out.textContent = 'filterByPromo: '+filteredProdutos.length+' produtos';
+};
+</script>
+</body>
+</html>

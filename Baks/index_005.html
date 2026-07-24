@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Chefão Autopeças — Peças nacionais e importadas com entrega para todo o Brasil. Frete grátis. Atendimento técnico.">
+<title>Chefão Autopeças — Auto Peças | Duque de Caxias/RJ</title>
+<link rel="icon" href="assets/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Audiowide&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+<div class="container">
+<div class="header-main">
+    <a href="#" class="header-logo">
+        <img src="assets/logo.png" alt="Chefão">
+        <span class="header-brand"><span class="brand-highlight">Chefão</span> Autopeças</span>
+    </a>
+    <div class="header-location">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Duque de Caxias, RJ</span>
+    </div>
+    <div class="header-search">
+        <input type="text" id="headerSearch" placeholder="Buscar por nome, código ou categoria...">
+        <button onclick="document.getElementById('headerSearch').dispatchEvent(new Event('input'))"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="header-actions">
+        <div class="header-customer" onmouseenter="openContactDropdown()" onmouseleave="scheduleCloseContact()">
+            <span class="header-customer-icon" title="Atendimento">
+                <i class="fas fa-headset" style="font-size:20px;color:var(--text2)"></i>
+                <span style="font-size:10px;font-weight:600;color:var(--text2)">Atendimento</span>
+            </span>
+            <div class="header-customer-dropdown" id="contactDropdown" style="display:none" onmouseenter="cancelCloseContact()" onmouseleave="scheduleCloseContact()">
+                <h4>Canais de Atendimento</h4>
+                <a href="https://wa.me/5521994325697" target="_blank" class="lg-menu-item" style="border:none"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
+                <a href="tel:+5521994325697" class="lg-menu-item" style="border:none;font-size:11px;color:var(--text2);padding-left:26px">(21) 99432-5697</a>
+            </div>
+        </div>
+        <div class="header-customer" id="headerCustomer" onmouseenter="openLoginDropdown()" onmouseleave="scheduleCloseDropdown()">
+            <span class="header-customer-icon" title="Minha Conta">
+                <img src="assets/user-icon.png" alt="Conta" style="width:22px;height:auto;opacity:0.7">
+                <span id="loginLabel" style="font-size:10px;font-weight:600;color:var(--text2)">Entrar</span>
+            </span>
+            <div class="header-customer-dropdown" id="loginDropdown" style="display:none" onmouseenter="cancelCloseDropdown()" onmouseleave="scheduleCloseDropdown()"></div>
+        </div>
+        <button class="header-btn" id="cartBtn">
+            <i class="fas fa-shopping-cart"></i> <span>Carrinho</span>
+            <span class="cart-count-badge" id="cartCount">0</span>
+        </button>
+    </div>
+</div>
+</div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+<div class="container">
+    <span class="nav-item active" onclick="filterByCat(0,this)"><i class="fas fa-car"></i> Todos</span>
+    <span class="nav-item" onclick="filterByCat(5,this)"><i class="fas fa-tachometer-alt"></i> Motor</span>
+    <span class="nav-item" onclick="filterByCat(2,this)"><i class="fas fa-cogs"></i> Suspensao</span>
+    <span class="nav-item" onclick="filterByCat(3,this)"><i class="fas fa-stop-circle"></i> Freios</span>
+    <span class="nav-item" onclick="filterByCat(1,this)"><i class="fas fa-bolt"></i> Eletrica</span>
+    <span class="nav-item" onclick="filterByCat(4,this)"><i class="fas fa-oil-can"></i> Oleos/Filtros</span>
+    <span class="nav-item offer" onclick="filterByPromo(this)"><i class="fas fa-tag"></i> OFERTAS</span>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+    <h1>Peças automotivas com qualidade e o melhor preço</h1>
+    <p>Frete grátis em Duque de Caxias e região. Atendimento técnico especializado. Mais de 2.000 peças em catálogo.</p>
+    <div class="hero-buttons">
+        <a href="javascript:void(0)" class="btn-primary" onclick="resetFilters()"><i class="fas fa-search"></i> Ver Catálogo Completo</a>
+        <a href="https://wa.me/5521994325697" target="_blank" class="btn-outline"><i class="fab fa-whatsapp"></i> Orçamento no WhatsApp</a>
+    </div>
+    <div class="hero-stats">
+        <div><strong>2.000+</strong> Peças em Catálogo</div>
+        <div><strong>98%</strong> Clientes Satisfeitos</div>
+        <div><strong>Frete Grátis</strong> Na Região</div>
+    </div>
+</div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="container">
+<div class="breadcrumb">
+    <a href="#"><i class="fas fa-home"></i> Página inicial</a>
+    <i class="fas fa-chevron-right"></i>
+    <span>Catálogo de Peças</span>
+</div>
+</div>
+
+<!-- CATALOG -->
+<section class="catalog" id="catalogo">
+<div class="container">
+<div class="catalog-layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="catalogSidebar">
+    <div class="sidebar-header"><i class="fas fa-filter"></i> Filtros</div>
+
+    <div class="filter-vehicle">
+        <h4><i class="fas fa-car"></i> Busque pelo modelo do veículo</h4>
+        <select id="filterMarca" onchange="carregarModelos()"><option value="">Marca...</option><option value="chevrolet">Chevrolet</option><option value="volkswagen">Volkswagen</option><option value="fiat">Fiat</option><option value="ford">Ford</option><option value="renault">Renault</option><option value="honda">Honda</option><option value="toyota">Toyota</option><option value="hyundai">Hyundai</option><option value="jeep">Jeep</option><option value="nissan">Nissan</option><option value="mitsubishi">Mitsubishi</option><option value="peugeot">Peugeot</option><option value="citroen">Citroen</option><option value="chery">Chery</option><option value="bmw">BMW</option><option value="mercedes">Mercedes-Benz</option><option value="audi">Audi</option></select>
+        <select id="filterModelo"><option value="">Modelo...</option></select>
+        <select id="filterAno"><option value="">Ano...</option></select>
+        <button class="btn-filter" onclick="filterByVehicle()">Buscar Peças</button>
+    </div>
+
+    <div class="filter-group">
+        <button class="filter-title active" onclick="toggleFilter(this)">Categorias <i class="fas fa-chevron-down"></i></button>
+        <div class="filter-options" id="filterCategories"></div>
+    </div>
+
+    <div class="filter-price">
+        <label>Preço máximo: <strong id="priceLabel">R$ 2.000</strong></label>
+        <input type="range" id="filterPrice" min="0" max="2000" value="2000" step="50" oninput="updatePriceLabel()">
+        <div class="range-vals"><span>R$ 0</span><span>R$ 2.000</span></div>
+    </div>
+
+    <div class="filter-group">
+        <button class="filter-title active" onclick="toggleFilter(this)">Disponibilidade <i class="fas fa-chevron-down"></i></button>
+        <div class="filter-options">
+            <label class="filter-check"><input type="checkbox" checked onchange="applyFilters()" data-filter="estoque"><span>Em estoque</span></label>
+            <label class="filter-check"><input type="checkbox" onchange="applyFilters()" data-filter="promocao"><span>Em promoção</span><span class="filter-count" id="countPromo">0</span></label>
+        </div>
+    </div>
+</aside>
+
+<!-- MAIN -->
+<main class="catalog-main">
+    <div class="sort-bar">
+        <span class="results" id="resultsCount"><strong>--</strong> produtos encontrados</span>
+        <div class="sort-select">
+            <label>Ordenar por:</label>
+            <select id="sortSelect" onchange="applyFilters()">
+                <option value="nome">Nome</option>
+                <option value="menor_preco">Menor Preço</option>
+                <option value="maior_preco">Maior Preço</option>
+            </select>
+        </div>
+        <button class="btn-filter-toggle" onclick="toggleSidebar()"><i class="fas fa-sliders-h"></i> Filtros</button>
+    </div>
+    <div class="product-grid" id="produtosContainer">
+        <div class="no-results"><i class="fas fa-spinner fa-spin"></i><h3>Carregando produtos...</h3></div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+</main>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+    <div>
+        <h4>Chefão Autopeças</h4>
+        <p>Auto peças nacionais e importadas desde 1992. Atendimento técnico especializado em Duque de Caxias e região.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/chefaoautopecas/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5521994325697" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+    <div>
+        <h4>Links Úteis</h4>
+        <a href="#">Catálogo de Peças</a>
+        <a href="#">Marcas</a>
+        <a href="#">Serviços</a>
+        <a href="#">Política de Entrega</a>
+    </div>
+    <div>
+        <h4>Atendimento</h4>
+        <p>Seg-Sex: 8h30 às 17h30</p>
+        <p>Sáb: 8h às 14h</p>
+        <p>Tel: (21) 99432-5697</p>
+        <p>Av. Automóvel Clube, 2328</p>
+        <p>Parque Paulista — Duque de Caxias/RJ</p>
+    </div>
+    <div>
+        <h4>Formas de Pagamento</h4>
+        <div class="footer-payments">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-elo"></i>
+            <i class="fas fa-barcode"></i>
+            <i class="fas fa-qrcode"></i>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom">
+    <span>© 2024 Chefão Autopeças — Todos os direitos reservados</span>
+    <span>CNPJ: 00.000.000/0001-00 | Duque de Caxias/RJ</span>
+</div>
+</div>
+</footer>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+        <h3><i class="fas fa-shopping-cart"></i> Meu Carrinho</h3>
+        <button onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-drawer-items" id="cartItems"><p style="text-align:center;color:#999;padding:30px;">Seu carrinho está vazio</p></div>
+</div>
+
+<script src="js/main.js?v=2"></script>
+</body>
+</html>
