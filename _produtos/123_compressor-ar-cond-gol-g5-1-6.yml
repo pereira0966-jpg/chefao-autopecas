@@ -1,0 +1,12 @@
+id: 123
+nome: Compressor Ar-Cond. â€” Gol G5 1.6
+codigo: AC-001
+categoria_id: 13
+categoria_nome: Ar Condicionado
+descricao_curta: Compressor ar-condicionado Gol G5
+preco: 749.9
+preco_promocional: 649.9
+estoque: 3
+nota_media: 4.6
+destaque: 1
+imagem: assets/prod_123_compressor_ar_condicionado_gol_g5.png

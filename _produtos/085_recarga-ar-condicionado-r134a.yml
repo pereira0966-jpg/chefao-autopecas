@@ -1,0 +1,12 @@
+id: 85
+nome: Recarga Ar-Condicionado R134a
+codigo: SV-006
+categoria_id: 9
+categoria_nome: Servicos
+descricao_curta: Recarga gas ar-condicionado completa
+preco: 199.9
+preco_promocional: 169.9
+estoque: 99
+nota_media: 4.6
+destaque: 0
+imagem: assets/prod_085_recarga_ar_condicionado.png

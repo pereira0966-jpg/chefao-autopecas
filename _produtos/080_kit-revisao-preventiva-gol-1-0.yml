@@ -1,0 +1,12 @@
+id: 80
+nome: Kit Revisao Preventiva â€” Gol 1.0
+codigo: SV-001
+categoria_id: 9
+categoria_nome: Servicos
+descricao_curta: Kit completo revisao preventiva Gol
+preco: 299.9
+preco_promocional: 249.9
+estoque: 99
+nota_media: 4.8
+destaque: 1
+imagem: assets/prod_080_kit_revisao_preventiva_automotiva.png

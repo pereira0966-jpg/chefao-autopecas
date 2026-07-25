@@ -1,0 +1,12 @@
+id: 53
+nome: Perfume Automotivo Glicerio
+codigo: AC-004
+categoria_id: 6
+categoria_nome: Palhetas e Acessorios
+descricao_curta: Perfume Glicerio longa duracao
+preco: 19.9
+preco_promocional: 14.9
+estoque: 60
+nota_media: 4.7
+destaque: 1
+imagem: assets/prod_053_perfume_automotivo_glicerino.png

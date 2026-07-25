@@ -1,0 +1,12 @@
+id: 83
+nome: Diagnostico Eletronico Scanner
+codigo: SV-004
+categoria_id: 9
+categoria_nome: Servicos
+descricao_curta: Diagnostico eletronico com scanner
+preco: 59.9
+preco_promocional: null
+estoque: 99
+nota_media: 4.5
+destaque: 0
+imagem: assets/prod_083_diagnostico_eletronico_scanner_auto.png
