@@ -282,6 +282,78 @@
     <div class="cart-drawer-items" id="cartItems"><p style="text-align:center;color:#999;padding:30px;">Seu carrinho está vazio</p></div>
 </div>
 
+<!-- CHECKOUT MODAL -->
+<div class="chk-overlay" id="checkoutOverlay" onclick="closeCheckout()"></div>
+<div class="chk-modal" id="checkoutModal">
+    <div class="chk-modal-header">
+        <h3><i class="fas fa-credit-card"></i> Pagamento</h3>
+        <button onclick="closeCheckout()">&times;</button>
+    </div>
+    <div class="chk-body">
+        <div class="chk-summary" id="checkoutSummary"></div>
+        <div class="chk-tabs">
+            <button class="chk-tab active" data-method="pix" onclick="switchTab('pix')"><i class="fas fa-qrcode"></i> PIX</button>
+            <button class="chk-tab" data-method="card" onclick="switchTab('card')"><i class="fas fa-credit-card"></i> Cartão</button>
+            <button class="chk-tab" data-method="boleto" onclick="switchTab('boleto')"><i class="fas fa-barcode"></i> Boleto</button>
+        </div>
+        <div class="chk-panels">
+            <div class="chk-panel active" id="chkPanelPix">
+                <div style="text-align:center;padding:15px 0">
+                    <div id="pixQRCode"><div style="width:200px;height:200px;margin:0 auto;background:#f9f9f9;border-radius:12px;display:flex;align-items:center;justify-content:center"><i class="fas fa-spinner fa-spin" style="font-size:30px;color:#999"></i></div></div>
+                    <p style="font-size:14px;font-weight:700;margin:10px 0 4px">Total: <span id="pixValue">R$ 0,00</span></p>
+                    <p style="font-size:11px;color:#999;margin-bottom:8px">Escaneie o QR Code ou copie o código PIX</p>
+                    <div class="chk-pix-copy">
+                        <input type="text" id="pixCodeDisplay" readonly onclick="this.select()">
+                        <button onclick="copiarPix()"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+                    <div id="pixStatus" style="margin:8px 0"><span style="color:#999;font-size:13px"><i class="fas fa-clock"></i> Aguardando pagamento...</span></div>
+                    <button class="chk-btn-mock" onclick="simularPagamentoPix()" style="background:var(--success);color:white;border:none;padding:8px 20px;border-radius:6px;cursor:pointer;font-weight:600;font-size:12px">Simular Pagamento PIX</button>
+                </div>
+            </div>
+            <div class="chk-panel" id="chkPanelCard">
+                <div class="chk-card-form">
+                    <div class="chk-field">
+                        <label>Nome no Cartão</label>
+                        <input type="text" id="chkCardName" placeholder="Como está escrito no cartão" maxlength="40">
+                    </div>
+                    <div class="chk-field">
+                        <label>Número do Cartão</label>
+                        <input type="text" id="chkCardNumber" placeholder="1234 5678 9012 3456" maxlength="19" oninput="maskCardNumber(this)">
+                    </div>
+                    <div class="chk-field-row">
+                        <div class="chk-field" style="flex:1">
+                            <label>Validade</label>
+                            <input type="text" id="chkCardExpiry" placeholder="MM/AA" maxlength="5" oninput="maskExpiry(this)">
+                        </div>
+                        <div class="chk-field" style="flex:1">
+                            <label>CVV</label>
+                            <input type="text" id="chkCardCVV" placeholder="123" maxlength="4" oninput="maskCVV(this)">
+                        </div>
+                    </div>
+                    <div class="chk-field">
+                        <label>Parcelamento</label>
+                        <div class="chk-parc-table" id="chkParcelas"></div>
+                    </div>
+                    <div id="cardStatus"></div>
+                    <button class="chk-btn-primary" onclick="processarCartao()"><i class="fas fa-lock"></i> Pagar</button>
+                </div>
+            </div>
+            <div class="chk-panel" id="chkPanelBoleto">
+                <div style="text-align:center;padding:15px 0">
+                    <i class="fas fa-barcode" style="font-size:64px;color:var(--primary);margin-bottom:10px;display:block"></i>
+                    <p style="font-size:14px;font-weight:700;margin-bottom:4px">Boleto Bancário</p>
+                    <p style="font-size:11px;color:#666;margin-bottom:12px">Vencimento: <strong id="boletoDueDate">--/--/----</strong></p>
+                    <div class="chk-boleto-code" id="boletoCode">----</div>
+                    <p style="font-size:13px;color:#999;margin:8px 0">Valor: <strong id="boletoValue">R$ 0,00</strong></p>
+                    <div id="boletoStatus" style="margin:8px 0"><span style="color:#999;font-size:13px"><i class="fas fa-clock"></i> Aguardando pagamento...</span></div>
+                    <button class="chk-btn-mock" onclick="downloadBoleto()" style="background:var(--primary);color:white;border:none;padding:8px 20px;border-radius:6px;cursor:pointer;font-weight:600;font-size:12px"><i class="fas fa-download"></i> Baixar Boleto (simulação)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="js/main.js?v=3"></script>
+<script src="js/payment.js?v=1"></script>
 </body>
 </html>

@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', function() { 'use strict';
 
     /* ============ CART ============ */
     var cart = JSON.parse(localStorage.getItem('chefao-cart') || '[]');
+    window.cart = cart;
     function saveCart() { localStorage.setItem('chefao-cart', JSON.stringify(cart)); updateCartUI(); }
+    window.saveCart = saveCart;
     function updateCartUI() {
         var cnt = cart.reduce(function(s,i){ return s+(i.qty||1); },0);
         var el = document.getElementById('cartCount');
@@ -46,7 +48,10 @@ document.addEventListener('DOMContentLoaded', function() { 'use strict';
                 '<button onclick="removeCartItem('+i+')" style="background:none;border:none;color:#E74C3C;cursor:pointer;font-size:16px;">&times;</button></div>';
         });
         html += '<div style="text-align:right;padding:12px 0;font-size:16px;font-weight:700;">Total: R$ '+total.toFixed(2)+'</div>';
-        html += '<button onclick="checkoutWhatsApp()" style="width:100%;padding:12px;background:#25D366;color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;"><i class="fab fa-whatsapp"></i> Finalizar Pedido no WhatsApp</button>';
+        html += '<div style="display:flex;gap:8px;margin-top:8px">';
+        html += '<button onclick="checkoutWhatsApp()" style="flex:1;padding:12px;background:#25D366;color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;"><i class="fab fa-whatsapp"></i> WhatsApp</button>';
+        html += '<button onclick="openCheckout()" style="flex:1;padding:12px;background:var(--primary);color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;"><i class="fas fa-credit-card"></i> Pagar Online</button>';
+        html += '</div>';
         el.innerHTML = html;
     }
     function removeCartItem(i) { cart.splice(i,1); saveCart(); renderCartItems(); }
@@ -388,6 +393,7 @@ document.addEventListener('DOMContentLoaded', function() { 'use strict';
         el.textContent = msg; el.style.opacity = '1'; el.style.transform = 'translateX(0)';
         setTimeout(function(){ el.style.opacity = '0'; el.style.transform = 'translateX(20px)'; }, 3000);
     }
+    window.showToast = showToast;
 
     /* ============ SEARCH DEBOUNCE ============ */
     var searchTimer;
