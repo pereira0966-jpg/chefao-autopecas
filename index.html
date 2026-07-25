@@ -66,6 +66,7 @@
     <span class="nav-item" onclick="filterByCat(1,this)"><i class="fas fa-bolt"></i> Eletrica</span>
     <span class="nav-item" onclick="filterByCat(4,this)"><i class="fas fa-oil-can"></i> Oleos/Filtros</span>
     <span class="nav-item offer" onclick="filterByPromo(this)"><i class="fas fa-tag"></i> OFERTAS</span>
+    <span class="nav-item" onclick="document.getElementById('sobre').scrollIntoView({behavior:'smooth'})"><i class="fas fa-store"></i> Sobre</span>
 </div>
 </nav>
 
@@ -155,6 +156,77 @@
 </div>
 </section>
 
+<!-- SOBRE -->
+<section class="about" id="sobre">
+<div class="container">
+    <div class="about-header">
+        <span class="section-tag"><i class="fas fa-store"></i> Sobre N&oacute;s</span>
+        <h2 class="section-title">Conhe&ccedil;a a hist&oacute;ria da Chef&atilde;o Autope&ccedil;as</h2>
+    </div>
+    <div class="about-content">
+        <div class="about-story">
+            <p class="about-quote">
+                &ldquo;Comecei no aperto, enfrentei perrengue, mas nunca abandonei o sonho. Hoje, esse sonho tem nome: <strong>Chef&atilde;o Auto Pe&ccedil;as</strong>.&rdquo;
+            </p>
+            <p>
+                Essa frase resume bem a ess&ecirc;ncia da <strong>Chef&atilde;o Autope&ccedil;as</strong>. O que come&ccedil;ou como um sonho em uma garagem se transformou em uma das lojas de auto pe&ccedil;as mais queridas de <strong>Duque de Caxias</strong> e de toda a <strong>Baixada Fluminense</strong>.
+            </p>
+            <p>
+                Localizados na <strong>Av. Autom&oacute;vel Clube, 2328 &mdash; Parque Paulista</strong>, somos especialistas em auto pe&ccedil;as <strong>nacionais e importadas</strong>. Trabalhamos com baterias, suspens&atilde;o, freios, &oacute;leos e filtros, motor e dire&ccedil;&atilde;o, palhetas e acess&oacute;rios, al&eacute;m de oferecer servi&ccedil;os completos de <strong>revis&atilde;o preventiva e corretiva</strong>.
+            </p>
+            <p>
+                Nosso diferencial? <strong>Atendimento que trata voc&ecirc; pelo nome</strong>. Aqui, voc&ecirc; n&atilde;o &eacute; s&oacute; mais um n&uacute;mero. A gente conhece seu carro, sabe a pe&ccedil;a que precisa e n&atilde;o mede esfor&ccedil;os para encontrar o que voc&ecirc; procura. Tudo com <strong>honestidade, transpar&ecirc;ncia e aquele papo reto</strong> que todo mundo gosta.
+            </p>
+            <p>
+                E tem mais: <strong>frete gr&aacute;tis na regi&atilde;o</strong>! Isso mesmo &mdash; se voc&ecirc; est&aacute; em Duque de Caxias e regi&atilde;o, a gente leva sua pe&ccedil;a sem custo adicional. Parcelamos no cart&atilde;o, aceitamos PIX e boleto. <strong>Qualidade e proced&ecirc;ncia</strong> s&atilde;o nosso compromisso.
+            </p>
+            <p>
+                Aqui o cliente volta n&atilde;o pelo meme, mas pelo <strong>atendimento</strong>. Seja para uma pastilha de freio ou uma revis&atilde;o completa, pode chegar que a gente resolve.
+            </p>
+            <p class="about-footer-text">
+                <strong>Chef&atilde;o Autope&ccedil;as</strong> &mdash; Tudo o que seu ve&iacute;culo precisa em um s&oacute; lugar.
+            </p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="differentials">
+<div class="container">
+    <div class="differentials-header">
+        <span class="section-tag"><i class="fas fa-medal"></i> Diferenciais</span>
+        <h2 class="section-title">Por que escolher a Chef&atilde;o?</h2>
+    </div>
+    <div class="differentials-grid">
+        <div class="differential-card">
+            <div class="diff-icon"><i class="fas fa-medal"></i></div>
+            <h3>Qualidade Garantida</h3>
+            <p>Pe&ccedil;as originais e de proced&ecirc;ncia certificada. Sem risco de levar pe&ccedil;a falsa.</p>
+        </div>
+        <div class="differential-card">
+            <div class="diff-icon"><i class="fas fa-truck"></i></div>
+            <h3>Frete Gr&aacute;tis</h3>
+            <p>Entregamos sem custo em Duque de Caxias e regi&atilde;o. Pe&ccedil;a e receba em casa.</p>
+        </div>
+        <div class="differential-card">
+            <div class="diff-icon"><i class="fas fa-headset"></i></div>
+            <h3>Atendimento T&eacute;cnico</h3>
+            <p>Equipe especializada para ajudar voc&ecirc; a encontrar a pe&ccedil;a certa para seu ve&iacute;culo.</p>
+        </div>
+        <div class="differential-card">
+            <div class="diff-icon"><i class="fas fa-credit-card"></i></div>
+            <h3>Pagamento Facilitado</h3>
+            <p>Parcelamos no cart&atilde;o, aceitamos PIX e boleto. At&eacute; 6x sem juros.</p>
+        </div>
+    </div>
+    <div class="differentials-cta">
+        <p>Vem fazer parte dessa hist&oacute;ria! Chama no WhatsApp, passa o modelo do seu carro e a gente encontra a pe&ccedil;a certa pra voc&ecirc;.</p>
+        <a href="https://wa.me/5521994325697" target="_blank" class="btn-success"><i class="fab fa-whatsapp"></i> Fazer Or&ccedil;amento</a>
+    </div>
+</div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
 <div class="container">
@@ -210,6 +282,6 @@
     <div class="cart-drawer-items" id="cartItems"><p style="text-align:center;color:#999;padding:30px;">Seu carrinho está vazio</p></div>
 </div>
 
-<script src="js/main.js?v=2"></script>
+<script src="js/main.js?v=3"></script>
 </body>
 </html>

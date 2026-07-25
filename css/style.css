@@ -759,3 +759,167 @@ img { max-width: 100%; display: block; }
 .header-customer-dropdown .lg-menu-item:hover { color: var(--primary); }
 .header-customer-dropdown .lg-menu-item i { width: 18px; text-align: center; }
 .header-customer-dropdown .lg-menu-item.danger { color: var(--danger); }
+
+/* ABOUT SECTION */
+.about {
+    padding: 50px 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--border-light);
+}
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+.section-title {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 24px;
+}
+.about-header, .differentials-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.about-story p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+}
+.about-story p strong {
+    color: var(--text);
+    font-weight: 600;
+}
+.about-quote {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text);
+    font-style: italic;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #EEF2FF, #FFF8E1);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin-bottom: 24px !important;
+}
+.about-quote strong {
+    color: var(--primary);
+    font-weight: 700;
+}
+.about-footer-text {
+    font-size: 16px;
+    text-align: center;
+    color: var(--text);
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+    margin-top: 24px;
+}
+
+/* DIFFERENTIALS */
+.differentials {
+    padding: 50px 0;
+    background: var(--bg);
+}
+.differentials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.differential-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 20px;
+    text-align: center;
+    transition: var(--transition);
+}
+.differential-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+}
+.diff-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 14px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: white;
+}
+.differential-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+.differential-card p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.differentials-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+.differentials-cta p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn-success {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: #25D366;
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    transition: var(--transition);
+}
+.btn-success:hover {
+    background: #1ea853;
+    transform: translateY(-1px);
+}
+
+/* RESPONSIVE ABOUT/DIFFERENTIALS */
+@media (max-width: 768px) {
+    .differentials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about-story p {
+        font-size: 14px;
+    }
+    .about-quote {
+        font-size: 15px;
+        padding: 16px 18px;
+    }
+}
+@media (max-width: 480px) {
+    .differentials-grid {
+        grid-template-columns: 1fr;
+    }
+}
