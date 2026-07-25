@@ -15,6 +15,7 @@ jobs:
         uses: nwtgck/actions-netlify@v3.0
         with:
           publish-dir: .
+          functions-dir: netlify/functions
           deploy-message: "Deploy from GitHub Actions"
           production-deploy: true
         env:
