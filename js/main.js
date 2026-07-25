@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() { 'use strict';
         var ex = cart.find(function(i){ return i.id === p.id; });
         if (ex) ex.qty = (ex.qty||1)+1; else { p.qty = 1; cart.push(p); }
         saveCart(); showToast('Adicionado ao carrinho!');
+        if (window.trackEvent) trackEvent('add_to_cart', { produto_id: p.id, produto_nome: p.nome, preco: p.preco_promocional||p.preco });
     }
     window.addToCart = addToCart;
     function toggleCart() {
@@ -448,6 +449,7 @@ document.addEventListener('DOMContentLoaded', function() { 'use strict';
         document.getElementById('loginLabel').textContent = e.split('@')[0];
         document.getElementById('loginDropdown').style.display = 'none';
         showToast('Bem-vindo!');
+        if (window.trackEvent) trackEvent('login', { email: e });
     };
     window.doRegister = function() {
         var n = document.getElementById('rgNome').value.trim(), e = document.getElementById('rgEmail').value.trim(), s = document.getElementById('rgSenha').value.trim();
@@ -457,6 +459,7 @@ document.addEventListener('DOMContentLoaded', function() { 'use strict';
         document.getElementById('loginLabel').textContent = n.split(' ')[0];
         document.getElementById('loginDropdown').style.display = 'none';
         showToast('Conta criada!');
+        if (window.trackEvent) trackEvent('register', { nome: n, email: e });
     };
     window.doLogout = function() {
         currentUser = null; localStorage.removeItem('chefao-v3-user');

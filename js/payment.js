@@ -16,7 +16,7 @@ function openCheckout() {
     renderCheckoutSummary();
     switchTab('pix');
     document.body.style.overflow = 'hidden';
-}
+    if (window.trackEvent) trackEvent('checkout_open', { item_count: cart.length, total: cart.reduce(function(s,p){ return s+parseFloat(p.preco_promocional||p.preco)*(p.qty||1); },0) }); }
 
 function closeCheckout() {
     var modal = document.getElementById('checkoutModal');
@@ -168,6 +168,7 @@ function finalizarPedido(metodo, transacaoId) {
     var orders = JSON.parse(localStorage.getItem('chefao-v3-orders') || '[]');
     orders.push(order);
     localStorage.setItem('chefao-v3-orders', JSON.stringify(orders));
+    if (window.trackEvent) trackEvent('purchase', { order_id: order.id, total: total, metodo: metodo, item_count: cart.length });
     var msg = 'Pedido confirmado!%0A%0A';
     msg += 'Pedido #'+order.id+'%0A';
     msg += 'Pagamento: '+metodo+'%0A';

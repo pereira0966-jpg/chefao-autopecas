@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel Administrativo — Chefão Autopeças</title>
+<title>Dashboard — Chefão Autopeças</title>
 <link rel="icon" href="../assets/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-:root{--primary:#213F99;--accent:#FECF03;--success:#2ABC27;--text:#333;--bg:#f5f5f5;--card:#fff;--border:#e0e0e0;--sidebar:#1a1a2e;}
+:root{--primary:#213F99;--accent:#FECF03;--success:#2ABC27;--text:#333;--bg:#f5f5f5;--card:#fff;--border:#e0e0e0;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);font-size:14px;min-height:100vh;}
-a{text-decoration:none;color:inherit;}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);font-size:14px;padding:20px;min-height:100vh;display:flex;align-items:center;justify-content:center;}
+.container{max-width:1100px;margin:0 auto;width:100%;}
 
-/* ===== LOGIN ===== */
+/* ===== LOGIN SCREEN ===== */
 #loginScreen{display:flex;align-items:center;justify-content:center;min-height:100vh;width:100%;}
 .login-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px;width:100%;max-width:380px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.06);}
 .login-box img{width:64px;margin-bottom:12px;}
@@ -27,43 +27,16 @@ a{text-decoration:none;color:inherit;}
 .login-box .error-msg{color:#ef4444;font-size:12px;margin-top:8px;display:none;}
 .login-box .lock-icon{font-size:40px;color:var(--primary);margin-bottom:12px;display:block;}
 
-/* ===== LAYOUT ===== */
-#panel{display:none;min-height:100vh;}
-.topbar{background:var(--sidebar);color:white;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;}
-.topbar-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;}
-.topbar-brand img{width:32px;height:32px;border-radius:50%;}
-.topbar-nav{display:flex;gap:4px;}
-.topbar-nav a{padding:8px 16px;border-radius:8px;color:rgba(255,255,255,0.7);font-size:13px;font-weight:500;transition:0.2s;display:flex;align-items:center;gap:6px;}
-.topbar-nav a:hover,.topbar-nav a.active{background:rgba(255,255,255,0.12);color:white;}
-.topbar-right{display:flex;align-items:center;gap:12px;}
-.topbar-user{font-size:12px;color:rgba(255,255,255,0.6);}
-.topbar-logout{padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;background:transparent;color:rgba(255,255,255,0.7);cursor:pointer;font-size:12px;font-family:Inter,sans-serif;transition:0.2s;}
-.topbar-logout:hover{background:rgba(239,68,68,0.2);border-color:#ef4444;color:#ef4444;}
-.panel-content{max-width:1100px;margin:0 auto;padding:24px;}
-
-/* ===== HOME TAB ===== */
-.home-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:12px;}
-.home-card{border:1px solid var(--border);border-radius:14px;padding:32px;text-align:center;background:var(--card);cursor:pointer;transition:0.25s;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
-.home-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.1);border-color:var(--primary);}
-.home-card .icon{font-size:48px;margin-bottom:16px;display:block;}
-.home-card.products .icon{color:var(--primary);}
-.home-card.stats .icon{color:#7c3aed;}
-.home-card h3{font-size:18px;font-weight:700;margin-bottom:6px;}
-.home-card p{color:#999;font-size:13px;line-height:1.5;}
-.home-card .btn{padding:10px 24px;border:none;border-radius:8px;font-size:13px;font-weight:700;font-family:Inter,sans-serif;cursor:pointer;margin-top:16px;transition:0.2s;display:inline-flex;align-items:center;gap:6px;}
-.home-card.products .btn{background:var(--primary);color:white;}
-.home-card.stats .btn{background:#7c3aed;color:white;}
-.home-card .btn:hover{opacity:0.9;}
-
-/* ===== STATS TAB ===== */
-.tab-content{display:none;}
-.tab-content.active{display:block;}
-.stats-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
-.stats-header h2{font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px;}
-.stats-header h2 i{color:var(--primary);}
+/* ===== DASHBOARD ===== */
+#dashboardContent{display:none;}
+h1{font-size:22px;font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+h1 i{color:var(--primary);}
+.header-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
 .period-select{display:flex;gap:6px;}
 .period-select button{padding:6px 14px;border:1px solid var(--border);border-radius:6px;background:var(--card);cursor:pointer;font-size:12px;font-weight:600;font-family:Inter,sans-serif;transition:0.2s;}
 .period-select button.active{background:var(--primary);color:white;border-color:var(--primary);}
+.logout-btn{padding:6px 14px;border:1px solid #ef4444;border-radius:6px;background:white;color:#ef4444;cursor:pointer;font-size:12px;font-weight:600;font-family:Inter,sans-serif;transition:0.2s;}
+.logout-btn:hover{background:#fef2f2;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:24px;}
 .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;}
 .card .icon{font-size:28px;margin-bottom:8px;}
@@ -74,6 +47,7 @@ a{text-decoration:none;color:inherit;}
 .card.blue .icon{color:var(--primary);}
 .card.orange .icon{color:#f59e0b;}
 .card.red .icon{color:#ef4444;}
+.card.teal .icon{color:#14b8a6;}
 .section{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:16px;}
 .section h3{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
 .section h3 i{color:var(--primary);}
@@ -83,18 +57,18 @@ th{color:#999;font-weight:600;font-size:11px;text-transform:uppercase;}
 .empty{text-align:center;padding:30px;color:#999;font-size:13px;}
 .loading{text-align:center;padding:40px;color:#999;}
 .loading i{font-size:30px;margin-bottom:10px;display:block;}
-@media(max-width:640px){.home-grid{grid-template-columns:1fr;}}
+@media(max-width:600px){.grid{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
 
-<!-- ===== LOGIN ===== -->
+<!-- ===== LOGIN SCREEN ===== -->
 <div id="loginScreen">
   <div class="login-box">
     <i class="fas fa-lock lock-icon"></i>
     <img src="../assets/logo.png" alt="Chefão">
-    <h2>Painel Administrativo</h2>
-    <p>Gerencie produtos e acompanhe as estatísticas da loja.</p>
+    <h2>Dashboard Administrativo</h2>
+    <p>Insira a senha de administrador para acessar as estatísticas.</p>
     <label for="adminPass">Senha</label>
     <input type="password" id="adminPass" placeholder="Digite a senha" onkeydown="if(event.key==='Enter')doLogin()">
     <button onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Entrar</button>
@@ -102,67 +76,30 @@ th{color:#999;font-weight:600;font-size:11px;text-transform:uppercase;}
   </div>
 </div>
 
-<!-- ===== PAINEL ===== -->
-<div id="panel">
-  <div class="topbar">
-    <div class="topbar-brand">
-      <img src="../assets/logo.png" alt="Logo">
-      <span>Chefão Autopeças</span>
-    </div>
-    <div class="topbar-nav">
-      <a href="#" class="active" onclick="switchTab('home',this)"><i class="fas fa-home"></i> Início</a>
-      <a href="#" onclick="switchTab('stats',this)"><i class="fas fa-chart-bar"></i> Estatísticas</a>
-    </div>
-    <div class="topbar-right">
-      <span class="topbar-user"><i class="fas fa-user"></i> Admin</span>
-      <button class="topbar-logout" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Sair</button>
+<!-- ===== DASHBOARD CONTENT ===== -->
+<div class="container" id="dashboardContent">
+  <div class="header-bar">
+    <h1><i class="fas fa-chart-bar"></i> Chefão Autopeças — Dashboard</h1>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <div class="period-select">
+        <button onclick="loadStats(7)" id="p7">7 dias</button>
+        <button onclick="loadStats(15)" id="p15">15 dias</button>
+        <button class="active" onclick="loadStats(30)" id="p30">30 dias</button>
+      </div>
+      <button class="logout-btn" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Sair</button>
     </div>
   </div>
-
-  <div class="panel-content">
-    <!-- TAB: HOME -->
-    <div id="tabHome" class="tab-content active">
-      <h2 style="font-size:20px;font-weight:800;margin-bottom:4px">Bem-vindo, Administrador</h2>
-      <p style="color:#999;font-size:13px;margin-bottom:8px">Escolha o que deseja gerenciar:</p>
-      <div class="home-grid">
-        <div class="home-card products" onclick="abrirProdutos()">
-          <i class="fas fa-boxes icon"></i>
-          <h3>Gerenciar Produtos</h3>
-          <p>Adicione, edite ou remova produtos do catálogo. Atualize preços, estoque, imagens e descrições.</p>
-          <span class="btn"><i class="fas fa-external-link-alt"></i> Abrir Gerenciador</span>
-        </div>
-        <div class="home-card stats" onclick="switchTab('stats',document.querySelector('.topbar-nav a[href*=\"stats\"]'))">
-          <i class="fas fa-chart-line icon"></i>
-          <h3>Estatísticas</h3>
-          <p>Acompanhe visitantes, vendas, faturamento, carrinho abandonado e métricas da loja.</p>
-          <span class="btn"><i class="fas fa-chart-bar"></i> Ver Estatísticas</span>
-        </div>
-      </div>
+  <div class="loading" id="loading"><i class="fas fa-spinner fa-spin"></i> Carregando estatísticas...</div>
+  <div id="statsContent" style="display:none">
+    <div class="grid" id="summaryCards"></div>
+    <div class="section">
+      <h3><i class="fas fa-calendar"></i> Últimos 7 dias</h3>
+      <div class="grid" id="weekCards" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))"></div>
     </div>
-
-    <!-- TAB: STATS -->
-    <div id="tabStats" class="tab-content">
-      <div class="stats-header">
-        <h2><i class="fas fa-chart-bar"></i> Estatísticas</h2>
-        <div class="period-select">
-          <button onclick="loadStats(7)" id="p7">7 dias</button>
-          <button onclick="loadStats(15)" id="p15">15 dias</button>
-          <button class="active" onclick="loadStats(30)" id="p30">30 dias</button>
-        </div>
-      </div>
-      <div class="loading" id="statsLoading"><i class="fas fa-spinner fa-spin"></i> Carregando...</div>
-      <div id="statsContent" style="display:none">
-        <div class="grid" id="summaryCards"></div>
-        <div class="section">
-          <h3><i class="fas fa-calendar"></i> Últimos 7 dias</h3>
-          <div class="grid" id="weekCards" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))"></div>
-        </div>
-        <div class="section">
-          <h3><i class="fas fa-table"></i> Detalhamento Diário</h3>
-          <div style="overflow-x:auto">
-            <table><thead><tr><th>Data</th><th>Visitantes</th><th>Add Carrinho</th><th>Checkout</th><th>Vendas</th><th>Cadastros</th></tr></thead><tbody id="dailyTable"></tbody></table>
-          </div>
-        </div>
+    <div class="section">
+      <h3><i class="fas fa-table"></i> Detalhamento Diário</h3>
+      <div style="overflow-x:auto">
+        <table><thead><tr><th>Data</th><th>Visitantes</th><th>Add Carrinho</th><th>Checkout</th><th>Vendas</th><th>Cadastros</th></tr></thead><tbody id="dailyTable"></tbody></table>
       </div>
     </div>
   </div>
@@ -187,8 +124,8 @@ function doLogin() {
       AUTH_TOKEN = data.token;
       sessionStorage.setItem('chefao-admin-token', AUTH_TOKEN);
       document.getElementById('loginScreen').style.display = 'none';
-      document.getElementById('panel').style.display = 'block';
-      switchTab('home', document.querySelector('.topbar-nav a'));
+      document.getElementById('dashboardContent').style.display = 'block';
+      loadStats(30);
     } else {
       errEl.textContent = data.error || 'Senha incorreta';
       errEl.style.display = 'block';
@@ -203,29 +140,16 @@ function doLogin() {
 function doLogout() {
   AUTH_TOKEN = null;
   sessionStorage.removeItem('chefao-admin-token');
-  document.getElementById('panel').style.display = 'none';
+  document.getElementById('dashboardContent').style.display = 'none';
   document.getElementById('loginScreen').style.display = 'flex';
   document.getElementById('adminPass').value = '';
-}
-
-function switchTab(tab, el) {
-  document.querySelectorAll('.topbar-nav a').forEach(function(a){ a.classList.remove('active'); });
-  document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('active'); });
-  if (el) el.classList.add('active');
-  var tabEl = document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1));
-  if (tabEl) tabEl.classList.add('active');
-  if (tab === 'stats') loadStats(30);
-}
-
-function abrirProdutos() {
-  window.open('/admin/cms/', '_blank');
 }
 
 function loadStats(days) {
   if (!AUTH_TOKEN) return doLogout();
   document.querySelectorAll('.period-select button').forEach(function(b){ b.classList.remove('active'); });
   document.getElementById('p'+days).classList.add('active');
-  document.getElementById('statsLoading').style.display = 'block';
+  document.getElementById('loading').style.display = 'block';
   document.getElementById('statsContent').style.display = 'none';
   fetch('/.netlify/functions/stats?days='+days+'&token='+encodeURIComponent(AUTH_TOKEN))
     .then(function(r){
@@ -237,11 +161,11 @@ function loadStats(days) {
       renderSummary(data);
       renderWeek(data);
       renderDaily(data);
-      document.getElementById('statsLoading').style.display = 'none';
+      document.getElementById('loading').style.display = 'none';
       document.getElementById('statsContent').style.display = 'block';
     })
     .catch(function(err){
-      document.getElementById('statsLoading').innerHTML = '<i class="fas fa-exclamation-triangle" style="color:#ef4444"></i><p>Erro: '+err.message+'</p>';
+      document.getElementById('loading').innerHTML = '<i class="fas fa-exclamation-triangle" style="color:#ef4444"></i><p>Erro ao carregar: '+err.message+'</p>';
     });
 }
 
@@ -259,6 +183,7 @@ function renderSummary(data) {
   });
   document.getElementById('summaryCards').innerHTML = html;
 }
+
 function renderWeek(data) {
   var l7 = data.last7 || {};
   var cards = [
@@ -273,6 +198,7 @@ function renderWeek(data) {
   });
   document.getElementById('weekCards').innerHTML = html;
 }
+
 function renderDaily(data) {
   var dates = Object.keys(data.daily || {}).sort().reverse();
   var html = '';
@@ -286,7 +212,8 @@ function renderDaily(data) {
 /* Auto-login if token exists */
 if (AUTH_TOKEN) {
   document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('panel').style.display = 'block';
+  document.getElementById('dashboardContent').style.display = 'block';
+  loadStats(30);
 }
 </script>
 </body>
